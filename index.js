@@ -19,6 +19,12 @@ const io = new Server(server, {
 
 app.use(cors());
 
+const PORT = process.env.PORT || 5000;
+
+app.get('/', (req, res) => {
+  res.send(`Server is running `);
+});
+
 io.on('connection', async (socket) => {
   const aki = new Aki({
     region: 'en',
@@ -66,10 +72,6 @@ io.on('connection', async (socket) => {
   });
 });
 
-app.get('/', (req, res) => {
-  res.send(`Server is running `);
-});
-
-server.listen(5000, () => {
-  console.log(`Websocket server is listening on port: 5000`);
+server.listen(PORT, () => {
+  console.log(`Websocket server is listening on port:${PORT}`);
 });
