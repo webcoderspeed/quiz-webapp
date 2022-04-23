@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { Aki } from 'aki-api';
+import cors from 'cors';
 
 const app = express();
 const server = createServer(app);
@@ -12,8 +13,11 @@ app.use(morgan('dev'));
 const io = new Server(server, {
   cors: {
     origin: '*',
+    methods: ['GET', 'POST'],
   },
 });
+
+app.use(cors());
 
 io.on('connection', async (socket) => {
   const aki = new Aki({
