@@ -12,7 +12,7 @@ setupSockets(app);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 1337;
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

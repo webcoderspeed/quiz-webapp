@@ -27,7 +27,7 @@ function App() {
       setGuessCount(data.result.guessCount);
       setFinalAnswers(data.result.answers);
     });
-
+    
     return () => {
       socket.off('question');
     };
